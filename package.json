@@ -6,8 +6,7 @@
   "scripts": {
     "build": "tsc",
     "watch-ts": "tsc -w",
-    "dev": "tsc && npm run start",
-    "start:dev": "tsc && npm run build  && nodemon -r dotenv/config --inspect ./dist/entry.js",
+    "dev": "tsc && npm run build  && nodemon -r dotenv/config --inspect ./dist/entry.js",
     "start": "nodemon ./dist/entry.js",
     "prod": "npm run build && npm run start"
   },
