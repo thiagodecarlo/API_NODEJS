@@ -5,7 +5,11 @@
   "main": "dist/entry.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node ./dist/entry.js "
+    "watch-ts": "tsc -w",
+    "dev": "tsc && npm run start",
+    "start:dev": "tsc && npm run build  && nodemon -r dotenv/config --inspect ./dist/entry.js",
+    "start": "nodemon ./dist/entry.js",
+    "prod": "npm run build && npm run start"
   },
   "keywords": [
     "API",
@@ -15,10 +19,11 @@
   "author": "Thiago de Carlo Goncalves",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.4.1"
   },
   "dependencies": {
+    "@types/node": "^20.4.1",
     "typescript": "^5.1.6",
+    "dotenv": "^16.3.1",
     "nodemon": "^3.0.1"
   }
 }
