@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "es2022",
+      "module": "commonjs",
+      "outDir": "dist",
+      "baseUrl": ".",
+      "strict": true,
+      "esModuleInterop": true,
+      "paths": {
+        "*":[
+        "node_modules/*",
+        "app/types/*"
+        ]
+      }	
+    }
+  }
+  

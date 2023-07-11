@@ -1,0 +1,24 @@
+{
+  "name": "api_nodejs",
+  "version": "1.0.0",
+  "description": "Desenvolvimento Inicial API REST NODEJS",
+  "main": "dist/entry.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node ./dist/entry.js "
+  },
+  "keywords": [
+    "API",
+    "REST",
+    "NODE"
+  ],
+  "author": "Thiago de Carlo Goncalves",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.1"
+  },
+  "dependencies": {
+    "typescript": "^5.1.6",
+    "nodemon": "^3.0.1"
+  }
+}
