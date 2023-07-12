@@ -4,12 +4,17 @@
 
 NPM Version: 20.3.1
 
+[Node.js® API Doumentation](https://nodejs.org/ "Node.js® API Doumentation")
+
 ## Features
 
 - Typescript 
+- Cluster
 - Native HTTP 
 - NODEMON 
 - DOTENV 
+
+
 
 
 ## HOW TO USE
@@ -18,15 +23,16 @@ NPM Version: 20.3.1
 
 Make sure you have installed  [Node.js®](https://nodejs.org/ "Node.js®") in version 20.3.1
 
-1 - After clone this repository, you should run the command **npm i** to install all dependencies needed
+1 - After clone this repository, you should run the command **npm i** to install all dependencies needed.
 
 `$ npm i`
 
-2 - Run the command **npm run dev** to run in DEVELOP mode
+2 - To test you can run the following command:
+
+`$ npm run test`
+
+3 - Run the command **npm run dev** to run in DEVELOP mode or **npm run start** to run in PRODUCTION mode.
 
 `$ npm run dev`
 
-3 - Or run the command **npm run start** to run in PRODUCTION mode
-
 `$ npm run start`
-

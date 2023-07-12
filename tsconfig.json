@@ -11,7 +11,10 @@
         "node_modules/*",
         "app/types/*"
         ]
-      }	
+      },
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "strictPropertyInitialization": false
     }
   }
   

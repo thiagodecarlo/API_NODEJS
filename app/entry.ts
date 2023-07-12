@@ -1,8 +1,9 @@
 import cluster from "node:cluster";
 import { availableParallelism } from "node:os";
 import process from "node:process";
+import 'reflect-metadata';
 
-const numCPUs = availableParallelism();
+const numCPUs = availableParallelism()/16;
 console.log(`${numCPUs} processes available`);
 
 async function runApp() {
@@ -26,6 +27,5 @@ if (cluster.isPrimary) {
 } else {
   // Workers can share any TCP connection
   // In this case it is an HTTP server
-
   runApp();
 }
