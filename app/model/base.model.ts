@@ -1,10 +1,8 @@
 export class BaseModel {
-  
-    private _id: string;
+  private _id: string;
   private _active: boolean;
   private _createdAt: Date;
   private _updatedAt: Date;
-
 
   /**
    * @param {string} id The id of the model to be created or updated for this model instance

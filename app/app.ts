@@ -1,8 +1,8 @@
 import * as bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
-import { env } from "node:process";
-import { Router } from "./config/router/router";
+import {env} from "node:process";
+import {Router} from "./config/router/router";
 
 const PORT = env.PORT || 3300;
 

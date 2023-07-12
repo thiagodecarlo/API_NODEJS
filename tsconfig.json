@@ -1,20 +1,23 @@
 {
-    "compilerOptions": {
-      "target": "es2022",
-      "module": "commonjs",
-      "outDir": "dist",
-      "baseUrl": ".",
-      "strict": true,
-      "esModuleInterop": true,
-      "paths": {
-        "*":[
-        "node_modules/*",
-        "app/types/*"
-        ]
-      },
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "strictPropertyInitialization": false
-    }
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "paths": {
+      "*": ["node_modules/*", "app/types/*"],
+      "@config/*": ["./config/*"],
+      "@controller/*": ["./controller/*"],
+      "@interfaces/*": ["./interfaces/*"],
+      "@model/*": ["./model/*"],
+      "@repositories/*": ["./repositories/*"],
+      "@service/*": ["./service/*"],
+      "@utils/*": ["./utils/*"]
+    },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false
   }
-  
+}
