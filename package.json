@@ -8,9 +8,11 @@
     "watch-ts": "tsc -w",
     "dev": "tsc && nodemon -r dotenv/config --inspect ./dist/entry.js",
     "start:dev": "nodemon --watch 'app/' --exec 'ts-node src/index.ts -e ts",
-    "start": "nodemon ./dist/entry.js",
+    "start": "npm run build && nodemon ./dist/entry.js",
     "prod": "npm run build && npm run start",
     "debug": "npm run build && npm run watch-debug",
+    "start:docker": "docker-compose up -d",
+    "down:docker": "docker-compose down",
     "test": "npx autocannon -c 500 -d 30 --workers 16 --renderStatusCodes --latency --warmup [-c 1 -d 2] http://localhost:3300"
   },
   "keywords": [
