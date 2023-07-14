@@ -11,6 +11,13 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["@typescript-eslint"],
-  "rules": {},
+  "rules": {
+    "function-paren-newline": ["error", "never"],
+    "space-before-function-paren": ["error", "never"],
+    "prettier": {
+      "function-paren-newline": ["error", "never"],
+      "space-before-function-paren": ["error", "never"]
+    }
+  },
   "no-explicit-any": true
 }

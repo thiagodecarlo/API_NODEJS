@@ -1,37 +1,32 @@
-import {Pool, QueryResult} from "pg";
+import { Model, ModelStatic } from 'sequelize';
 
-import {IRepositoryBase} from "../interfaces/repositories/irepository-base";
+export class RepositoryBase<
+  T extends Model<TAttributes>,
+  TAttributes extends object,
+> {
+  private model: ModelStatic<T>;
 
-export class RepositoryBase<T> implements IRepositoryBase<T> {
-  protected readonly pool: Pool;
-  protected readonly tableName: string;
-
-  constructor(tableName: string) {
-    this.pool = new Pool(); // Configure your PostgreSQL connection parameters here
-    this.tableName = tableName;
+  constructor(model: ModelStatic<T>) {
+    this.model = model;
   }
 
-  protected async query(
-    queryText: string,
-    params?: any[]
-  ): Promise<QueryResult> {
-    const client = await this.pool.connect();
+  public async getAll(): Promise<T[]> {
     try {
-      return await client.query(queryText, params);
-    } finally {
-      client.release();
+      const entities = await this.model.findAll();
+      return entities;
+    } catch (error) {
+      throw new Error('Error getting entity from database:' + error);
     }
   }
 
-  async getById(id: string): Promise<T> {
-    const queryText = `SELECT * FROM ${this.tableName} WHERE id = $1`;
-    const result = await this.query(queryText, [id]);
-    return result.rows[0] || null;
+  public async getById(id: number): Promise<T | null> {
+    try {
+      const entity = await this.model.findByPk(id);
+      return entity;
+    } catch (error) {
+      throw new Error('Error getting entities from database:' + error);
+    }
   }
 
-  async getAll(): Promise<T[]> {
-    const queryText = `SELECT * FROM ${this.tableName}`;
-    const result = await this.query(queryText);
-    return result.rows;
-  }
+  // TODO: Create generics methods for create, update and delete
 }

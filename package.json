@@ -6,12 +6,14 @@
   "scripts": {
     "build": "tsc",
     "watch-ts": "tsc -w",
+    "start-db": "docker run -d --name node_postgresql -e POSTGRES_USER=postgresql -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=db_rural -v %cd%/data:/data/postgres -p 5432:5432 postgres",
+    "stop-db": "docker stop node_postgresql && docker rm node_postgresql",
     "dev": "tsc && nodemon -r dotenv/config --inspect ./dist/entry.js",
-    "start:dev": "nodemon --watch 'app/' --exec 'ts-node src/index.ts -e ts",
+    "start:dev": "nodemon --watch 'app/' --exec 'ts-node src/index.ts' -e ts",
     "start": "npm run build && nodemon ./dist/entry.js",
     "prod": "npm run build && npm run start",
     "debug": "npm run build && npm run watch-debug",
-    "start:docker": "docker-compose up -d",
+    "up:docker": "docker-compose up -d",
     "down:docker": "docker-compose down",
     "test": "npx autocannon -c 500 -d 30 --workers 16 --renderStatusCodes --latency --warmup [-c 1 -d 2] http://localhost:3300"
   },
@@ -21,7 +23,7 @@
     "NODE"
   ],
   "author": "Thiago de Carlo Goncalves",
-  "license": "ISC",
+  "license": "MIT   ",
   "dependencies": {
     "body-parser": "^1.20.2",
     "class-transformer": "^0.5.1",
@@ -33,6 +35,9 @@
     "pg": "^8.11.1",
     "reflect-metadata": "^0.1.13",
     "routing-controllers": "^0.10.4",
+    "sequelize": "^6.15.1",
+    "sequelize-cli": "^6.6.1",
+    "ts-node": "^10.9.1",
     "tsyringe": "^4.8.0"
   },
   "devDependencies": {
@@ -42,6 +47,7 @@
     "@types/multer": "^1.4.7",
     "@types/node": "^20.4.1",
     "@types/pg": "^8.10.2",
+    "@types/sequelize": "^4.28.15",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "autocannon": "^7.11.0",
@@ -49,7 +55,6 @@
     "eslint-config-prettier": "^8.8.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.0",
-    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   }
 }

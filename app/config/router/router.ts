@@ -1,6 +1,9 @@
-import express from "express";
-import {useExpressServer} from "routing-controllers";
-import {RuralProducerController} from "../../controller/rural-producer.controller";
+import express from 'express';
+import { useContainer, useExpressServer } from 'routing-controllers';
+import { container } from 'tsyringe';
+import { PlantingCropController } from '../../controller/planting-crops.controller';
+import { RuralProducerController } from '../../controller/rural-producer.controller';
+import { TsyringeAdapter } from './tsyring-adapter';
 
 export class Router {
   /**
@@ -11,9 +14,13 @@ export class Router {
     // routing-controllers/Express powerUps
     // * authorizationChecker
     // * currentUserChecker
+
+    const inversifyAdapter = new TsyringeAdapter(container);
+    useContainer(inversifyAdapter);
+
     useExpressServer(app, {
       defaultErrorHandler: false,
-      controllers: [RuralProducerController],
+      controllers: [RuralProducerController, PlantingCropController],
       //controllers:["./controller/**/*.js"] **alternative**
     });
   }

@@ -1,102 +1,111 @@
-import {BaseModel} from "./base.model";
-import {PlantingCrops} from "./planting-crops.model";
+import { DataTypes, Model } from 'sequelize';
+import { PostgreSequelizeConnector } from '../config/database/postgresql-config';
+import { TableNames } from '../config/database/table-names.enum';
+import { PlantingCrop } from './planting-crop.model';
+import { RuralProducerPlantingCrops } from './rural-producer-planting-crops';
 
-export class RuralProducer extends BaseModel {
-  private _name: string;
-  private _document: string;
-  private _propertyName: string;
-  private _city: string;
-  private _state: string;
-  private _totalArea: number;
-  private _arableArea: number;
-  private _vegetationArea: number;
-  private _plantingCrops: PlantingCrops[];
-
-  constructor(
-    id: string,
-    active: boolean,
-    name: string,
-    document: string,
-    propertyName: string,
-    city: string,
-    state: string,
-    totalArea: number,
-    arableArea: number,
-    vegetationArea: number
-  ) {
-    super(id, active);
-    this.name = name;
-    this.document = document;
-    this.propertyName = propertyName;
-    this.city = city;
-    this.state = state;
-    this.totalArea = totalArea;
-    this.arableArea = arableArea;
-    this.vegetationArea = vegetationArea;
-  }
-
-  public get name(): string {
-    return this._name;
-  }
-  public set name(newName: string) {
-    this._name = newName;
-  }
-
-  public get document(): string {
-    return this._document;
-  }
-  public set document(newDocument: string) {
-    this._document = newDocument;
-  }
-
-  public get propertyName(): string {
-    return this._propertyName;
-  }
-  public set propertyName(newPropertyName: string) {
-    this._propertyName = newPropertyName;
-  }
-
-  public get city(): string {
-    return this._city;
-  }
-  public set city(newCity: string) {
-    this._city = newCity;
-  }
-
-  public get state(): string {
-    return this._state;
-  }
-  public set state(newState: string) {
-    this._state = newState;
-  }
-
-  public get totalArea(): number {
-    return this._totalArea;
-  }
-  public set totalArea(newTotalArea: number) {
-    this._totalArea = newTotalArea;
-  }
-
-  public get arableArea(): number {
-    return this._arableArea;
-  }
-  public set arableArea(newArableArea: number) {
-    this._arableArea = newArableArea;
-  }
-
-  public get vegetationArea(): number {
-    return this._vegetationArea;
-  }
-  public set vegetationArea(newVegetationArea: number) {
-    this._vegetationArea = newVegetationArea;
-  }
-
-  public get plantingCrops(): PlantingCrops[] {
-    return this._plantingCrops;
-  }
-  // public set plantingCrops(newPlantingCrops: PlantingCrops[]) {
-  //     if (newPlantingCrops != null && newPlantingCrops.length !== 0) {
-  //         this._plantingCrops = newPlantingCrops;
-  //     }
-  // }
+class RuralProducer extends Model implements IRuralProducer {
+  public id: number;
+  public name: string;
+  public document: string;
+  public propertyName: string;
+  public city: string;
+  public state: string;
+  public totalArea: number;
+  public arableArea: number;
+  public vegetationArea: number;
+  public active: boolean = true;
+  public createdAt: Date = new Date();
+  public updatedAt: Date = new Date();
+  public plantingCrops: PlantingCrop[];
+  public plantingCropsIds: number[];
 }
+
+RuralProducer.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    document: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    propertyName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    totalArea: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    arableArea: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    vegetationArea: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+  },
+  {
+    sequelize: PostgreSequelizeConnector,
+    modelName: 'RuralProducer',
+    tableName: TableNames.RURAL_PRODUCERS,
+  }
+);
+
+RuralProducer.belongsToMany(PlantingCrop, {
+  through: 'RuralProducerPlantingCrops',
+  foreignKey: 'idRuralProducer',
+  constraints: true,
+});
+
+PlantingCrop.belongsToMany(RuralProducer, {
+  through: 'RuralProducerPlantingCrops',
+  foreignKey: 'idPlantingCrop',
+  constraints: true,
+});
+
+RuralProducer.hasMany(RuralProducerPlantingCrops, {
+  foreignKey: 'idRuralProducer',
+});
+RuralProducerPlantingCrops.belongsTo(RuralProducer, {
+  foreignKey: 'idRuralProducer',
+});
+PlantingCrop.hasMany(RuralProducerPlantingCrops, {
+  foreignKey: 'idPlantingCrop',
+});
+RuralProducerPlantingCrops.belongsTo(PlantingCrop, {
+  foreignKey: 'idPlantingCrop',
+});
+
+export { RuralProducer };

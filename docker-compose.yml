@@ -1,16 +1,16 @@
-version: "3"
+version: '3'
 services:
   node:
-    build: ""
-    command: "npm run start"
-    working_dir: "/home/node/app"
+    build: ''
+    command: 'npm run start'
+    working_dir: '/home/node/app'
     environment:
-      - NODE-ENV = "production"
-      - PORT = "3300"
+      - NODE-ENV='production'
+      - PORT='3300'
     expose:
-      - "3300"
+      - '3300'
     ports:
-      - "3300:3300"
+      - '3300:3300'
 
   db:
     container_name: node_postgresql

@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "55279f72-4aff-413c-bbee-d2f1eb54fb4b",
+		"name": "API NODE JS 2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5997338"
+	},
+	"item": [
+		{
+			"name": "Rural Producer",
+			"item": [
+				{
+					"name": "GET Rural Producer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/rural-producer/",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"rural-producer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Rural Producer By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/rural-producer/:id",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"rural-producer",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Rural Producer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Thiago de Carlo Gonçalves5\",\r\n    \"document\": \"32930563850\",\r\n    \"propertyName\": \"Fazenda Santa Fé\",\r\n    \"city\": \"Presidente Prudente\",\r\n    \"state\": \"São Paulo\",\r\n    \"totalArea\": \"1200\",\r\n    \"arableArea\": \"1000\",\r\n    \"vegetationArea\": \"200\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/rural-producer/",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"rural-producer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Rural Producer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \r\n    \"plantingCrops\":[\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/rural-producer/",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"rural-producer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Rural Producer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/rural-producer/",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"rural-producer",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Planting Crops",
+			"item": [
+				{
+					"name": "GET Planting Crops",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/planting-crop/",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"planting-crop",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Planting Crops By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/planting-crop/:id",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"planting-crop",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Planting Crops",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"name\":\"SOJA\"\r\n    \"name\":\"Banana\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/planting-crop/",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"planting-crop",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Planting Crops",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"name\":\"Soja4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/planting-crop/",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"planting-crop",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Planting Crops",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/planting-crop/",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"planting-crop",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost:"
+		},
+		{
+			"key": "PORT",
+			"value": "3300"
+		}
+	]
+}
