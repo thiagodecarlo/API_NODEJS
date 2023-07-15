@@ -1,11 +1,12 @@
 import { DataTypes, Model } from 'sequelize';
 import { PostgreSequelizeConnector } from '../config/database/postgresql-config';
 import { TableNames } from '../config/database/table-names.enum';
+import { IRuralProducer } from '../interfaces/model/irural-producer';
 import { PlantingCrop } from './planting-crop.model';
 import { RuralProducerPlantingCrops } from './rural-producer-planting-crops';
 
 class RuralProducer extends Model implements IRuralProducer {
-  public id: number;
+  id: number;
   public name: string;
   public document: string;
   public propertyName: string;
@@ -17,7 +18,6 @@ class RuralProducer extends Model implements IRuralProducer {
   public active: boolean = true;
   public createdAt: Date = new Date();
   public updatedAt: Date = new Date();
-  public plantingCrops: PlantingCrop[];
   public plantingCropsIds: number[];
 }
 
@@ -36,6 +36,10 @@ RuralProducer.init(
     document: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        is: /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/,
+        msg: 'Verifique os dados do campo documento',
+      },
     },
     propertyName: {
       type: DataTypes.STRING,

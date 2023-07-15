@@ -1,8 +1,10 @@
 import { DataTypes, Model } from 'sequelize';
 import { PostgreSequelizeConnector } from '../config/database/postgresql-config';
 import { TableNames } from '../config/database/table-names.enum';
+import { IPlantingCrop } from '../interfaces/model/iplanting-crops';
+
 export class PlantingCrop extends Model implements IPlantingCrop {
-  public id!: number;
+  id: number;
   public name!: string;
   public active: boolean = true;
   public createdAt: Date = new Date();

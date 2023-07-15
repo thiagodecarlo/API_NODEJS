@@ -53,7 +53,7 @@ export class RuralProducerController {
   ) {
     try {
       const { plantingCropsIds, ...data } = body; // Array de IDs das PlantingCrop relacionadas
-
+      console.log('----------------------------', body);
       const ruralProducer = await this.ruralProducerRepository.create(data);
 
       // if (plantingCropsIds && plantingCropsIds.length > 0) {

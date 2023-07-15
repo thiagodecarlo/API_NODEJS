@@ -1,4 +1,5 @@
 import { injectable } from 'tsyringe';
+import { IPlantingCrop } from '../interfaces/model/iplanting-crops';
 import { PlantingCrop } from '../model/planting-crop.model';
 import { RepositoryBase } from './repository-base';
 

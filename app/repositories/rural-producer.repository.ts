@@ -1,3 +1,4 @@
+import { IRuralProducer } from '../interfaces/model/irural-producer';
 import { PlantingCrop } from '../model/planting-crop.model';
 import { RuralProducer } from '../model/rural-producer.model';
 import { RepositoryBase } from './repository-base';
@@ -34,6 +35,7 @@ export class RuralProducerRepository extends RepositoryBase<
     ruralProducer: Partial<RuralProducer>
   ): Promise<RuralProducer> {
     try {
+      console.log('555555----------------------------', ruralProducer);
       const createdRuralProducer = await RuralProducer.create(ruralProducer);
       return createdRuralProducer;
     } catch (error) {

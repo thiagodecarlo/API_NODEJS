@@ -1,4 +1,6 @@
-interface IRuralProducer extends iBaseModel {
+import { IBaseModel } from './ibase-model';
+
+export interface IRuralProducer extends IBaseModel {
   name: string;
   document: string;
   propertyName: string;
