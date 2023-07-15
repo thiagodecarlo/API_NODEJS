@@ -4,6 +4,7 @@ import express from 'express';
 import { env } from 'node:process';
 import { startDatabase } from './config/database/database-startup';
 import { Router } from './config/router/router';
+import { SwaggerDocs } from './config/swagger/swagger';
 
 const PORT = env.PORT || 3300;
 
@@ -45,6 +46,7 @@ app.use(function (
 // * cache
 // * interceptors
 Router.setExpress(app);
+SwaggerDocs.setExpress(app); //swagger must be after routes definition
 
 startDatabase()
   .then(() => {

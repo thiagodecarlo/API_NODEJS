@@ -1,0 +1,333 @@
+openapi: 3.0.1
+info:
+  title: API NODE JS
+  description: |
+    <h2>API NODE JS </h2>
+  contact:
+    name: Thiago de Carlo Gonçalves
+    email: thiagodecarlo@gmail.com
+  license:
+    name: Documentação Padrão
+  version: 1.0.0
+servers:
+  - url: 'https://localhost:8080'
+    description: Local
+tags:
+  - name: Rural Producer
+  - name: Planting Crop
+
+paths:
+  /rural-producer:
+    post:
+      tags:
+        - Rural Producer
+      summary: Retorna todos os Produtores Rurais.
+      description: Retorna todos os Produtores Rurais.
+      operationId: getAllRuralProducers
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ruralProducerList'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        405:
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        412:
+          description: PreCondition Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        500:
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+
+  /rural-producer/{id}:
+    get:
+      tags:
+        - Rural Producer
+      summary: Retorna todos os Produtores Rurais.
+      description: Retorna todos os Produtores Rurais.
+      operationId: getRuralProducer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: codigo ID
+          schema:
+            type: integer
+            example: 998
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ruralProducer'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '412':
+          description: PreCondition Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '501':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '503':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+
+  /planting-crop:
+    post:
+      tags:
+        - Planting Crop
+      summary: Retorna todas as Culturas plantadas.
+      description: Retorna todas as Culturas plantadas.
+      operationId: getAllPlantingCrops
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/plantingCropList'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        405:
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        412:
+          description: PreCondition Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        500:
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+
+  /planting-crop/{id}:
+    get:
+      tags:
+        - Planting Crop
+      summary: Retorna a Culturas plantadas pelo ID.
+      description: Retorna a Culturas plantadas pelo ID.
+      operationId: getPlantingCrop
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: codigo ID
+          schema:
+            type: integer
+            example: 998
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/plantingCrop'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '412':
+          description: PreCondition Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '500':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '501':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '503':
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+
+components:
+  schemas:
+    ruralProducer:
+      description: Rural Producers
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id.
+          example: 1
+        name:
+          type: string
+          description: Nome
+          example: José dos Reis
+        document:
+          type: string
+          description: número de documento(CPF/CNPJ)
+          example: 05321456000154
+        propertyName:
+          type: string
+          description: Nome da Propriedade
+          example: false
+        city:
+          type: string
+          description: Cidade
+          example: false
+        state:
+          type: string
+          description: Estado/UF
+          example: false
+        totalArea:
+          type: number
+          description: Área Total
+          example: true
+        arableArea:
+          type: number
+          description: Área útil da propriedade
+          example: 30
+        vegetationArea:
+          type: number
+          description: Área de Vegetacão'
+          example: 1
+        active:
+          type: boolean
+          description: Ativo ou inativo
+          example: true
+        createdAt:
+          type: string
+          description: Data de Criação do registro
+          example: '2023-07-14T19:06:37.619Z'
+        updatedAt:
+          type: string
+          description: Data de atualização do registro
+          example: '2023-07-14T19:06:37.619Z'
+    ruralProducerList:
+      description: Lista de Rural Producers
+      type: array
+      items:
+        $ref: '#/components/schemas/ruralProducer'
+    plantingCrop:
+      description: Planting Crop
+      type: object
+      properties:
+        id:
+          type: number
+          description: ID
+          example: 20
+        name:
+          type: string
+          description: nome
+          example: banana
+        active:
+          type: boolean
+          description: Ativo ou inativo
+          example: true
+        createdAt:
+          type: string
+          description: Data de Criação do registro
+          example: '2023-07-14T19:06:37.619Z'
+        updatedAt:
+          type: string
+          description: Data de atualização do registro
+          example: '2023-07-14T19:06:37.619Z'
+    plantingCropList:
+      description: Lista de Planting Crops
+      type: array
+      items:
+        $ref: '#/components/schemas/plantingCrop'
+
+    error:
+      type: object
+      properties:
+        httpCode:
+          type: string
+          description: Código de erro HTTP
+        errorCode:
+          type: string
+          description: 'Código de erro interno da API no formato. Ex.: API-3566.
+            Esse código poderá ser utilizado internamente pelo cliente para mapeamento
+            customizado da mensagem de erro.'
+        message:
+          type: string
+          description: Mensagem de erro resumida
+        detailedMessage:
+          type: string
+          description: Mensagem de erro detalhada
