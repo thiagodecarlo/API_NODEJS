@@ -1,3 +1,4 @@
+import { Model } from 'sequelize';
 import { IRuralProducer } from '../interfaces/model/irural-producer';
 import { PlantingCrop } from '../model/planting-crop.model';
 import { RuralProducer } from '../model/rural-producer.model';
@@ -12,8 +13,6 @@ export class RuralProducerRepository extends RepositoryBase<
   }
 
   public override async getAll(): Promise<RuralProducer[]> {
-    console.log(`override getAll`);
-
     try {
       const entities = await RuralProducer.findAll({
         include: [
@@ -35,7 +34,6 @@ export class RuralProducerRepository extends RepositoryBase<
     ruralProducer: Partial<RuralProducer>
   ): Promise<RuralProducer> {
     try {
-      console.log('555555----------------------------', ruralProducer);
       const createdRuralProducer = await RuralProducer.create(ruralProducer);
       return createdRuralProducer;
     } catch (error) {
@@ -49,7 +47,6 @@ export class RuralProducerRepository extends RepositoryBase<
   ): Promise<RuralProducer | null> {
     try {
       const ruralProducer = await RuralProducer.findByPk(id);
-      ruralProducer?.setDataValue('PlantingCrops', 1);
       if (ruralProducer) {
         updates.updatedAt = new Date();
         const updated = await ruralProducer.update(updates);
@@ -69,6 +66,53 @@ export class RuralProducerRepository extends RepositoryBase<
       }
     } catch (error) {
       throw new Error('Error deleting RuralProducer from database');
+    }
+  }
+
+  public async CountAllFarms(): Promise<number> {
+    try {
+      const quantity = await RuralProducer.count();
+      return quantity;
+    } catch (error) {
+      throw new Error('Error getting entity from database:' + error);
+    }
+  }
+
+  public async CountAllFarmsTotalArea(): Promise<number> {
+    try {
+      const quantity = await RuralProducer.sum('totalArea');
+      return quantity;
+    } catch (error) {
+      throw new Error('Error getting entity from database:' + error);
+    }
+  }
+
+  public async CountAllFarmsByState(): Promise<any> {
+    try {
+      const byState = await RuralProducer.findAll({ group: 'state' });
+      return byState;
+    } catch (error) {
+      throw new Error('Error getting entity from database:' + error);
+    }
+  }
+
+  public async CountAllFarmsByPlantingCrop(): Promise<any> {
+    try {
+      const byPlantingCrop = await Model.sequelize?.query(
+        `SELECT 
+        [RuralProducer].[id],
+        [RuralProducer].[], 
+        [RuralProducer].[date], 
+        [PlantingCrop].[name] 
+        FROM [RuralProducer] 
+        INNER JOIN [RuralProducer] AS [RuralProducer] ON [PlantingCrop].[name] = [PlantingCrop].[name] 
+        GROUP BY [PlantingCrop].[PlantingCrop]`
+      );
+
+      RuralProducer.findAll({ group: 'state' });
+      return byPlantingCrop;
+    } catch (error) {
+      throw new Error('Error getting entity from database:' + error);
     }
   }
 

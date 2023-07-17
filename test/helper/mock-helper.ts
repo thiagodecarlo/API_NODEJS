@@ -1,5 +1,5 @@
-import { RuralProducer } from '../../app/model/farm.model';
 import { PlantingCrop } from '../../app/model/planting-crop.model';
+import { RuralProducer } from '../../app/model/rural-producer.model';
 
 export class MockHelper {
   private getPlantingCrop(): PlantingCrop {

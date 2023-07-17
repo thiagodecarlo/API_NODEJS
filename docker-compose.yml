@@ -11,6 +11,8 @@ services:
       - '3300'
     ports:
       - '3300:3300'
+    networks:
+      - my-network
 
   db:
     container_name: node_postgresql
@@ -21,9 +23,11 @@ services:
       POSTGRES_PASSWORD: 123456
       POSTGRES_DB: db_rural
     volumes:
-      - ./data:/data/postgres
+      - ./pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    networks:
+      - my-network
 
   pgadmin:
     image: dpage/pgadmin4
@@ -33,3 +37,9 @@ services:
       PGADMIN_DEFAULT_PASSWORD: 123456
     ports:
       - 8080:80
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
