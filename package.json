@@ -6,15 +6,17 @@
   "scripts": {
     "build": "tsc",
     "watch-ts": "tsc -w",
-    "start-db": "docker run -d --name node_postgresql -e POSTGRES_USER=postgresql -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=db_rural -v %cd%/data:/data/postgres -p 5432:5432 postgres",
-    "stop-db": "docker stop node_postgresql && docker rm node_postgresql",
     "dev": "tsc && nodemon -r dotenv/config --inspect ./dist/entry.js",
     "start:dev": "nodemon --watch 'app/' --exec 'ts-node src/index.ts' -e ts",
     "start": "npm run build && nodemon ./dist/entry.js",
     "prod": "npm run build && npm run start",
     "debug": "npm run build && npm run watch-debug",
-    "up:docker": "docker-compose up -d",
-    "down:docker": "docker-compose down",
+    "postgres:start": "docker run -d --name node_postgresql -e POSTGRES_USER=postgresql -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=db_rural -v %cd%/pgdata:/var/lib/postgresql/data -p 5432:5432 postgres",
+    "postgres:stop": "docker stop node_postgresql && docker rm node_postgresql",
+    "pgadmin:start": "docker run -d --name pgadmin_container -p 8080:80 -e PGADMIN_DEFAULT_EMAIL=developer@developer.com -e PGADMIN_DEFAULT_PASSWORD=123456 -v %cd%/backup:/var/lib/postgresql/data dpage/pgadmin4",
+    "pgadmin:stop": "docker stop pgadmin_container && docker rm pgadmin_container",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
     "test": "npx autocannon -c 500 -d 30 --workers 16 --renderStatusCodes --latency --warmup [-c 1 -d 2] http://localhost:3300"
   },
   "keywords": [
