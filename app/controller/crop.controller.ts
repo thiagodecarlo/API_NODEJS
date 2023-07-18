@@ -15,7 +15,7 @@ import { Crop } from '../model/crop.model';
 import { CropRepository } from '../repositories/crop.repository';
 
 @injectable()
-@Controller('/planting-crop')
+@Controller('/crop')
 export class CropController {
   constructor(
     @inject(CropRepository)
@@ -26,9 +26,9 @@ export class CropController {
   public async getAll(@Req() req: Request, @Res() res: Response) {
     try {
       const plantingCrops = await this.cropRepository.getAll();
-      return res.status(200).json(plantingCrops);
+      res.status(200).json(plantingCrops);
     } catch (err) {
-      return res.status(500).json({
+      res.status(500).json({
         error: 'Error retrieving Crops',
         details: err,
       });
@@ -39,9 +39,9 @@ export class CropController {
   public async getById(@Res() res: Response, @Param('id') id: string) {
     try {
       const response = await this.cropRepository.getById(id);
-      return res.status(200).json(response);
+      res.status(200).json(response);
     } catch (error) {
-      return res.status(500).json({ error: 'Error retrieving Crop' });
+      res.status(500).json({ error: 'Error retrieving Crop' });
     }
   }
 
@@ -51,7 +51,7 @@ export class CropController {
       let entity = new Crop();
       entity.name = body.name;
       const response = await this.cropRepository.create(entity);
-      return res.status(201).send(response);
+      res.status(201).send(response);
     } catch (error) {
       res.status(500).send({ status: error });
     }

@@ -15,12 +15,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/rural-producer/",
+							"raw": "{{HOST}}{{PORT}}/farm/",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"rural-producer",
+								"farm",
 								""
 							]
 						}
@@ -33,18 +33,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/rural-producer/:id",
+							"raw": "{{HOST}}{{PORT}}/farm/:id",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"rural-producer",
+								"farm",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "4"
 								}
 							]
 						}
@@ -58,7 +58,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Thiago de Carlo Gonçalves5\",\r\n    \"document\": \"32930563850\",\r\n    \"propertyName\": \"Fazenda Santa Fé\",\r\n    \"city\": \"Presidente Prudente\",\r\n    \"state\": \"São Paulo\",\r\n    \"totalArea\": \"1200\",\r\n    \"arableArea\": \"1000\",\r\n    \"vegetationArea\": \"200\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Thiago de Carlo Gonçalves\",\r\n    \"document\": \"329.305.638-50\",\r\n    \"propertyName\": \"Fazenda Santa Fé\",\r\n    \"city\": \"Presidente Prudente\",\r\n    \"state\": \"São Paulo\",\r\n    \"totalArea\": \"1200\",\r\n    \"arableArea\": \"1000\",\r\n    \"vegetationArea\": \"200\",\r\n    \"cropsIds\":[\r\n        \"ce354e26-9970-48b5-9300-32340818f563\"\r\n    ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -66,12 +66,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/rural-producer/",
+							"raw": "{{HOST}}{{PORT}}/farm/",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"rural-producer",
+								"farm",
 								""
 							]
 						}
@@ -85,7 +85,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\":1,\r\n    \r\n    \"plantingCrops\":[\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"id\":\"cd9a9a3e-5a9d-4417-99e4-4ca54d0b829b\",\r\n    \r\n    \"plantingCrops\":[\r\n        {\r\n            \"id\": \"3fc53545-00e0-480c-a231-fccc3e4e3cb9\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -93,12 +93,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/rural-producer/",
+							"raw": "{{HOST}}{{PORT}}/farm/",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"rural-producer",
+								"farm",
 								""
 							]
 						}
@@ -120,12 +120,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/rural-producer/",
+							"raw": "{{HOST}}{{PORT}}/farm/",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"rural-producer",
+								"farm",
 								""
 							]
 						}
@@ -135,7 +135,7 @@
 			]
 		},
 		{
-			"name": "Planting Crops",
+			"name": "Crops",
 			"item": [
 				{
 					"name": "GET Planting Crops",
@@ -143,12 +143,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/planting-crop/",
+							"raw": "{{HOST}}{{PORT}}/crop/",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"planting-crop",
+								"crop",
 								""
 							]
 						}
@@ -161,12 +161,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/planting-crop/:id",
+							"raw": "{{HOST}}{{PORT}}/crop/:id",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"planting-crop",
+								"crop",
 								":id"
 							],
 							"variable": [
@@ -186,7 +186,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    // \"name\":\"SOJA\"\r\n    \"name\":\"Banana\"\r\n}\r\n",
+							"raw": "{\r\n    // \"name\":\"SOJA\"\r\n    \"name\":\"cana-de-açucar\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -194,12 +194,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/planting-crop/",
+							"raw": "{{HOST}}{{PORT}}/crop/",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"planting-crop",
+								"crop",
 								""
 							]
 						}
@@ -213,7 +213,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\":4,\r\n    \"name\":\"Soja4\"\r\n}",
+							"raw": "{\r\n    \"id\":\"f7680c34-0b92-47a2-8098-4532ff9b5d3e\",\r\n    \"name\":\"Soja4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -221,12 +221,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/planting-crop/",
+							"raw": "{{HOST}}{{PORT}}/crop/",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"planting-crop",
+								"crop",
 								""
 							]
 						}
@@ -240,7 +240,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\":4\r\n}",
+							"raw": "{\r\n    \"id\":\"f7680c34-0b92-47a2-8098-4532ff9b5d3e\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -248,13 +248,126 @@
 							}
 						},
 						"url": {
-							"raw": "{{HOST}}{{PORT}}/planting-crop/",
+							"raw": "{{HOST}}{{PORT}}/crop/",
 							"host": [
 								"{{HOST}}{{PORT}}"
 							],
 							"path": [
-								"planting-crop",
+								"crop",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "POST FARM - CROP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"name\":\"SOJA\"\r\n    \"CropId\":\"3fc53545-00e0-480c-a231-fccc3e4e3cb9\",\r\n    \"FarmId\":\"cd9a9a3e-5a9d-4417-99e4-4ca54d0b829b\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/farm/crop/",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"farm",
+								"crop",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "GET farms-count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/dashboard/farms-count",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"dashboard",
+								"farms-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET total-area",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/dashboard/total-area",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"dashboard",
+								"total-area"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET chart/farm/state",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/dashboard/chart/farm/state",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"dashboard",
+								"chart",
+								"farm",
+								"state"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET chart/crop",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{PORT}}/dashboard/chart/crop",
+							"host": [
+								"{{HOST}}{{PORT}}"
+							],
+							"path": [
+								"dashboard",
+								"chart",
+								"crop"
 							]
 						}
 					},

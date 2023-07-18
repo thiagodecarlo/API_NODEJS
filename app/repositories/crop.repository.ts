@@ -44,4 +44,33 @@ export class CropRepository extends RepositoryBase<Crop, ICrop> {
       throw new Error('Error deleting Crops from database');
     }
   }
+
+  public async CountAllFarmsByCrop(): Promise<any> {
+    try {
+      console.log('1');
+
+      const result = await Crop.findAll({
+        include: { all: true },
+      });
+      console.log('2');
+
+      return new Promise((resolve, reject) => {
+        const countByPlantingCrop: Record<string, number> = {};
+
+        result.forEach((crop: Crop) => {
+          const count = crop.dataValues.FarmCrops.length as number;
+          countByPlantingCrop[crop.dataValues.name] = count;
+        });
+        resolve(countByPlantingCrop);
+      })
+        .then((ret) => {
+          return ret;
+        })
+        .catch((err) => {
+          throw new Error('Error getting entity from database:' + err);
+        });
+    } catch (error) {
+      throw new Error('Error getting entity from database:' + error);
+    }
+  }
 }

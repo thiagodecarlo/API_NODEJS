@@ -1,6 +1,6 @@
 import { injectable } from 'tsyringe';
 
 @injectable()
-export class RuralProducerService {
+export class FarmService {
   constructor() {}
 }

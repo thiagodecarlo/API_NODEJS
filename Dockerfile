@@ -7,8 +7,8 @@ COPY . .
 EXPOSE 3300
 ENV DB_HOST=localhost
 ENV DB_PORT=5432
-ENV DB_USER=postgresql
+ENV DB_USER=admin
 ENV DB_PASSWORD=123456
-ENV DB_DATABASE=db_rural
+ENV DB_DATABASE=postgres
 
 CMD ["npm", "start"]

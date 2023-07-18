@@ -1,10 +1,10 @@
-import * as bodyParser from 'body-parser';
-import cors from 'cors';
-import express from 'express';
-import { env } from 'node:process';
-import { startDatabase } from './config/database/database-startup';
-import { Router } from './config/router/router';
-import { SwaggerDocs } from './config/swagger/swagger';
+import * as bodyParser from "body-parser";
+import cors from "cors";
+import express from "express";
+import {env} from "node:process";
+import {startDatabase} from "./config/database/database-startup";
+import {Router} from "./config/router/router";
+import {SwaggerDocs} from "./config/swagger/swagger";
 
 const PORT = env.PORT || 3300;
 
@@ -14,11 +14,11 @@ const app = express();
 app.use(cors());
 
 //use json form parser middlware
-app.use(bodyParser.json({ limit: '6mb' }));
+app.use(bodyParser.json({limit: "6mb"}));
 //use query string parser middlware
 app.use(
   bodyParser.urlencoded({
-    limit: '10mb',
+    limit: "10mb",
     extended: true,
   })
 );
@@ -57,7 +57,7 @@ startDatabase()
     });
   })
   .catch((error) => {
-    console.error('Erro ao inicializar o banco de dados:', error);
+    console.error("Erro ao inicializar o banco de dados:", error);
     process.exit(1);
   });
 

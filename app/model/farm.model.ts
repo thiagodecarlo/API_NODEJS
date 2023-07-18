@@ -2,7 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import { PostgreSequelizeConnector } from '../config/database/postgresql-config';
 import { TableNames } from '../config/database/table-names.enum';
 import { IFarm } from '../interfaces/model/ifarm';
-import { Crop } from './crop.model';
+import { FarmCrop } from './farm-crop.model';
 
 class Farm extends Model implements IFarm {
   id: string;
@@ -15,7 +15,7 @@ class Farm extends Model implements IFarm {
   public arableArea: number;
   public vegetationArea: number;
   public active: boolean = true;
-  public cropsIds: number[];
+  public cropsIds: string[];
 }
 
 Farm.init(
@@ -66,23 +66,23 @@ Farm.init(
   {
     timestamps: true,
     sequelize: PostgreSequelizeConnector,
-    modelName: 'RuralProducer',
+    modelName: 'Farm',
     tableName: TableNames.FARMS,
   }
 );
 
-Farm.belongsToMany(Crop, {
-  as: 'Farm',
-  through: TableNames.FARM_PLANTINGCROPS,
-  foreignKey: 'idFarm',
-  constraints: true,
+Farm.hasMany(FarmCrop, {
+  foreignKey: {
+    allowNull: false,
+  },
+  keyType: DataTypes.UUID,
 });
 
-Crop.belongsToMany(Farm, {
-  as: 'Crop',
-  through: TableNames.FARM_PLANTINGCROPS,
-  foreignKey: 'idPlantingCrop',
-  constraints: true,
+FarmCrop.belongsTo(Farm, {
+  foreignKey: {
+    allowNull: false,
+  },
+  keyType: DataTypes.UUID,
 });
 
 export { Farm };

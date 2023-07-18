@@ -6,22 +6,22 @@ import { FarmRepository } from '../repositories/farm.repository';
 
 @injectable()
 @Controller('/dashboard')
-export class PlantingCropController {
+export class DashboardController {
   constructor(
     @inject(CropRepository)
     private readonly cropRepository: CropRepository,
-    private readonly farmRepository: FarmRepository
+    @inject(FarmRepository) private readonly farmRepository: FarmRepository
   ) {}
 
   @Get('/farms-count')
   public async CountAllFarms(@Req() req: Request, @Res() res: Response) {
     try {
       const count = await this.farmRepository.CountAllFarms();
-      return res.status(200).json({
+      res.status(200).json({
         total_farms: count,
       });
     } catch (err) {
-      return res.status(500).json({
+      res.status(500).json({
         error: 'Error retrieving Farm Count',
         details: err,
       });
@@ -32,12 +32,12 @@ export class PlantingCropController {
   public async CountAllFarmsTotalArea(@Res() res: Response) {
     try {
       const totalArea = await this.farmRepository.CountAllFarmsTotalArea();
-      return res.status(200).json({
+      res.status(200).json({
         total_farms_area: totalArea,
         unity: 'hectares',
       });
     } catch (error) {
-      return res.status(500).json({ error: 'Error retrieving Total Area' });
+      res.status(500).json({ error: 'Error retrieving Total Area' });
     }
   }
 
@@ -45,9 +45,19 @@ export class PlantingCropController {
   public async CountAllFarmsByState(@Res() res: Response) {
     try {
       const farmsByState = await this.farmRepository.CountAllFarmsByState();
-      return res.status(200).json(farmsByState);
+      res.status(200).json(farmsByState);
     } catch (error) {
-      return res.status(500).json({ error: 'Error retrieving Total Area' });
+      res.status(500).json({ error: 'Error Farms By State' });
+    }
+  }
+
+  @Get('/chart/crop')
+  public async CountAllFarmsByCrop(@Res() res: Response) {
+    try {
+      const farmsByState = await this.cropRepository.CountAllFarmsByCrop();
+      res.status(200).json(farmsByState);
+    } catch (error) {
+      res.status(500).json({ error: 'Error Farms By Crop' });
     }
   }
 }

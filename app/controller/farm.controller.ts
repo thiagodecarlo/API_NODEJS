@@ -10,22 +10,28 @@ import {
   Res,
 } from 'routing-controllers';
 import { injectable } from 'tsyringe';
+import { Crop } from '../model/crop.model';
+import { FarmCrop } from '../model/farm-crop.model';
 import { Farm } from '../model/farm.model';
+import { FarmCropRepository } from '../repositories/farm-crop.repository';
 import { FarmRepository } from '../repositories/farm.repository';
 
 @injectable()
-@Controller('/rural-producer')
+@Controller('/farm')
 export class FarmController {
-  constructor(private readonly FarmRepository: FarmRepository) {}
+  constructor(
+    private readonly FarmRepository: FarmRepository,
+    private readonly farmCropRepository: FarmCropRepository
+  ) {}
 
   @Get('/')
   public async getAll(@Res() res: Response) {
     try {
-      const farm = await this.FarmRepository.getAll();
-      return res.status(200).json(farm);
+      const farms = await this.FarmRepository.getAll();
+      res.status(200).json(farms);
     } catch (err) {
-      return res.status(500).json({
-        error: 'Error retrieving PlantingCrops',
+      res.status(500).json({
+        error: 'Error retrieving Farms',
         details: err,
       });
     }
@@ -34,34 +40,44 @@ export class FarmController {
   @Get('/:id')
   public async getById(@Res() res: Response, @Param('id') id: string) {
     try {
-      const response = await this.FarmRepository.getById(id);
-      return res.status(200).json(response);
-    } catch (error) {
-      return res.status(500).json({ error: 'Error retrieving PlantingCrop' });
+      const farm = await this.FarmRepository.getById(id);
+      res.status(200).json(farm);
+    } catch (err) {
+      res.status(500).json({
+        error: 'Error retrieving Farm',
+        details: err,
+      });
     }
   }
 
   @Post('/')
   public async postFarm(@Res() res: Response, @Body() body: Farm) {
     try {
-      const { cropsIds, ...data } = body; // Array de IDs das PlantingCrop relacionadas
-      console.log('----------------------------', body);
-      const ruralProducer = await this.FarmRepository.create(data);
+      const { cropsIds, ...data } = body;
+      const farm = await this.FarmRepository.create(data);
+      if (cropsIds && cropsIds.length > 0) {
 
-      // if (plantingCropsIds && plantingCropsIds.length > 0) {
-      //   for (const plantingCropId of plantingCropsIds) {
-      //     const plantingCrop = await PlantingCrop.findByPk(plantingCropId);
-      //     console.log(plantingCrop);
-      //     if (plantingCrop) {
-      //       await ruralProducer.addPlantingCrop(plantingCrop);
-      //     }
-      //   }
-      // }
-      const populatedFarm = await ruralProducer.reload(); // Recarregar Farm com as PlantingCrops associadas
-
-      return res.status(201).send(populatedFarm);
-    } catch (error) {
-      res.status(500).send({ error });
+        return new Promise<void>((resolve, reject) => {
+          cropsIds.map(async (id) => {
+            const crop = await Crop.findByPk(id);
+            if (crop) {
+              const farmCrop = await this.farmCropRepository.create({
+                FarmId: farm.dataValues.id,
+                CropId: id,
+              });
+            }
+          });
+          resolve();
+        }).then(async () => {
+          const populatedFarm = await farm.reload();
+          res.status(201).send(populatedFarm);
+        });
+      }
+    } catch (err) {
+      res.status(500).json({
+        error: 'Error on recording registries',
+        details: err,
+      });
     }
   }
 
@@ -78,8 +94,11 @@ export class FarmController {
       } else {
         res.status(404).json({ error: 'Registry not found' });
       }
-    } catch (error) {
-      res.status(500).json({ error: 'Error updating Registry' });
+    } catch (err) {
+      res.status(500).json({
+        error: 'Error on recording registries',
+        details: err,
+      });
     }
   }
 
@@ -91,6 +110,23 @@ export class FarmController {
       res.status(204).end();
     } catch (error) {
       res.status(500).json({ error: 'Error deleting Registry' });
+    }
+  }
+
+  @Post('/crop')
+  public async postFarmCrop(@Res() res: Response, @Body() body: FarmCrop) {
+    const { FarmId, CropId } = body;
+
+    try {
+      console.log('---------------------------- salvando');
+      const farmCrop = await this.farmCropRepository.create({ FarmId, CropId });
+
+      res.status(201).send(farmCrop);
+    } catch (err) {
+      res.status(500).json({
+        error: 'Error on recording registries',
+        details: err,
+      });
     }
   }
 }

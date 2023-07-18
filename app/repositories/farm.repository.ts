@@ -1,6 +1,5 @@
-import { Model } from 'sequelize';
+import sequelize from 'sequelize';
 import { IFarm } from '../interfaces/model/ifarm';
-import { Crop } from '../model/crop.model';
 import { Farm } from '../model/farm.model';
 import { RepositoryBase } from './repository-base';
 
@@ -12,16 +11,20 @@ export class FarmRepository extends RepositoryBase<Farm, IFarm> {
   public override async getAll(): Promise<Farm[]> {
     try {
       const entities = await Farm.findAll({
-        include: [
-          {
-            model: Crop,
-            through: {
-              attributes: ['id'],
-            },
-          },
-        ],
+        include: { all: true, nested: true },
       });
       return entities;
+    } catch (error) {
+      throw new Error('Error getting entity from database:' + error);
+    }
+  }
+
+  public override async getById(id: string): Promise<Farm> {
+    try {
+      const entity = await Farm.findByPk(id, {
+        include: { all: true, nested: true },
+      });
+      return entity as Farm;
     } catch (error) {
       throw new Error('Error getting entity from database:' + error);
     }
@@ -83,28 +86,14 @@ export class FarmRepository extends RepositoryBase<Farm, IFarm> {
 
   public async CountAllFarmsByState(): Promise<any> {
     try {
-      const byState = await Farm.findAll({ group: 'state' });
+      const byState = await Farm.findAll({
+        attributes: [
+          'state',
+          [sequelize.fn('COUNT', sequelize.col('state')), 'count'],
+        ],
+        group: ['state'],
+      });
       return byState;
-    } catch (error) {
-      throw new Error('Error getting entity from database:' + error);
-    }
-  }
-
-  public async CountAllFarmsByPlantingCrop(): Promise<any> {
-    try {
-      const byPlantingCrop = await Model.sequelize?.query(
-        `SELECT
-        [Farm].[id],
-        [Farm].[],
-        [Farm].[date],
-        [PlantingCrop].[name]
-        FROM [Farm]
-        INNER JOIN [Farm] AS [Farm] ON [PlantingCrop].[name] = [PlantingCrop].[name]
-        GROUP BY [PlantingCrop].[PlantingCrop]`
-      );
-
-      Farm.findAll({ group: 'state' });
-      return byPlantingCrop;
     } catch (error) {
       throw new Error('Error getting entity from database:' + error);
     }

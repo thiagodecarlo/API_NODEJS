@@ -2,8 +2,9 @@ import { DataTypes, Model } from 'sequelize';
 import { PostgreSequelizeConnector } from '../config/database/postgresql-config';
 import { TableNames } from '../config/database/table-names.enum';
 import { ICrop } from '../interfaces/model/icrop';
+import { FarmCrop } from './farm-crop.model';
 
-export class Crop extends Model implements ICrop {
+class Crop extends Model implements ICrop {
   id: string;
   public name!: string;
   public active: boolean = true;
@@ -34,3 +35,19 @@ Crop.init(
     tableName: TableNames.CROPS,
   }
 );
+
+Crop.hasMany(FarmCrop, {
+  foreignKey: {
+    allowNull: false,
+  },
+  keyType: DataTypes.UUID,
+});
+
+FarmCrop.belongsTo(Crop, {
+  foreignKey: {
+    allowNull: false,
+  },
+  keyType: DataTypes.UUID,
+});
+
+export { Crop };

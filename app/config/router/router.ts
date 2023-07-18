@@ -2,6 +2,7 @@ import express from 'express';
 import { useContainer, useExpressServer } from 'routing-controllers';
 import { container } from 'tsyringe';
 import { CropController } from '../../controller/crop.controller';
+import { DashboardController } from '../../controller/dashboard.controller';
 import { FarmController } from '../../controller/farm.controller';
 import { TsyringeAdapter } from './tsyring-adapter';
 
@@ -20,7 +21,7 @@ export class Router {
 
     useExpressServer(app, {
       defaultErrorHandler: false,
-      controllers: [FarmController, CropController],
+      controllers: [FarmController, CropController, DashboardController],
       //controllers:["./controller/**/*.js"] **alternative**
     });
   }
