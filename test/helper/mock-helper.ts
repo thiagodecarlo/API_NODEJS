@@ -1,24 +1,24 @@
-import { PlantingCrop } from '../../app/model/planting-crop.model';
-import { RuralProducer } from '../../app/model/rural-producer.model';
+import { Crop } from '../../app/model/crop.model';
+import { Farm } from '../../app/model/farm.model';
 
 export class MockHelper {
-  private getPlantingCrop(): PlantingCrop {
-    const plantingCrop: PlantingCrop = new PlantingCrop();
+  private getCrop(): Crop {
+    const plantingCrop: Crop = new Crop();
     plantingCrop.name = 'string';
     return plantingCrop;
   }
 
-  private getAllPlantingCrops(): PlantingCrop[] {
-    return new Array(this.getPlantingCrop());
+  private getAllCrops(): Crop[] {
+    return new Array(this.getCrop());
   }
 
-  private getruralProducer(): RuralProducer {
-    const ruralProducer: RuralProducer = new RuralProducer();
+  private getruralProducer(): Farm {
+    const ruralProducer: Farm = new Farm();
     ruralProducer.name = 'string';
     return ruralProducer;
   }
 
-  private getAllRuralProducers(): RuralProducer[] {
+  private getAllFarms(): Farm[] {
     return new Array(this.getruralProducer());
   }
 }

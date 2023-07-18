@@ -271,14 +271,6 @@ components:
           type: boolean
           description: Ativo ou inativo
           example: true
-        createdAt:
-          type: string
-          description: Data de Criação do registro
-          example: '2023-07-14T19:06:37.619Z'
-        updatedAt:
-          type: string
-          description: Data de atualização do registro
-          example: '2023-07-14T19:06:37.619Z'
     ruralProducerList:
       description: Lista de Rural Producers
       type: array
@@ -300,14 +292,6 @@ components:
           type: boolean
           description: Ativo ou inativo
           example: true
-        createdAt:
-          type: string
-          description: Data de Criação do registro
-          example: '2023-07-14T19:06:37.619Z'
-        updatedAt:
-          type: string
-          description: Data de atualização do registro
-          example: '2023-07-14T19:06:37.619Z'
     plantingCropList:
       description: Lista de Planting Crops
       type: array

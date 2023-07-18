@@ -1,5 +1,5 @@
 import { IBaseModel } from './ibase-model';
 
-export interface IPlantingCrop extends IBaseModel {
+export interface ICrop extends IBaseModel {
   name: string;
 }

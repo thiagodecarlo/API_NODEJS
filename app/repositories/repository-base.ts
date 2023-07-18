@@ -19,7 +19,7 @@ export class RepositoryBase<
     }
   }
 
-  public async getById(id: number): Promise<T | null> {
+  public async getById(id: string): Promise<T | null> {
     try {
       const entity = await this.model.findByPk(id);
       return entity;

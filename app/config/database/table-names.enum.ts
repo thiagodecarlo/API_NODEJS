@@ -1,5 +1,5 @@
 export enum TableNames {
-  RURAL_PRODUCERS = 'ruralproducers',
-  PLANTING_CROPS = 'plantingcrops',
-  RURALPRODUCER_PLANTINGCROPS = 'ruralproducer_plantingcrops',
+  FARMS = 'farms',
+  CROPS = 'crops',
+  FARM_PLANTINGCROPS = 'farms_crops',
 }

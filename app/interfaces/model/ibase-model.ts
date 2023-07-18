@@ -1,8 +1,6 @@
 import { Model } from 'sequelize';
 
 export interface IBaseModel extends Model {
-  id: number;
+  id: string;
   active: boolean;
-  createdAt: Date;
-  updatedAt: Date;
 }

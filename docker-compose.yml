@@ -7,6 +7,11 @@ services:
     environment:
       - NODE-ENV='production'
       - PORT='3300'
+      - ENV DB_HOST=localhost
+      - ENV DB_PORT=5432
+      - ENV DB_USER=admin
+      - ENV DB_PASSWORD=123456
+      - ENV DB_DATABASE=postgres
     expose:
       - '3300'
     ports:
@@ -21,7 +26,7 @@ services:
     environment:
       POSTGRES_USER: postgresql
       POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: db_rural
+      POSTGRES_DB: postgres
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     ports:
@@ -33,7 +38,7 @@ services:
     image: dpage/pgadmin4
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: developer@developer.com
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: 123456
     ports:
       - 8080:80

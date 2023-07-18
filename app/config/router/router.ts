@@ -1,8 +1,8 @@
 import express from 'express';
 import { useContainer, useExpressServer } from 'routing-controllers';
 import { container } from 'tsyringe';
-import { PlantingCropController } from '../../controller/planting-crops.controller';
-import { RuralProducerController } from '../../controller/rural-producer.controller';
+import { CropController } from '../../controller/crop.controller';
+import { FarmController } from '../../controller/farm.controller';
 import { TsyringeAdapter } from './tsyring-adapter';
 
 export class Router {
@@ -20,7 +20,7 @@ export class Router {
 
     useExpressServer(app, {
       defaultErrorHandler: false,
-      controllers: [RuralProducerController, PlantingCropController],
+      controllers: [FarmController, CropController],
       //controllers:["./controller/**/*.js"] **alternative**
     });
   }
