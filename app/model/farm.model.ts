@@ -14,8 +14,8 @@ class Farm extends Model implements IFarm {
   public totalArea: number;
   public arableArea: number;
   public vegetationArea: number;
-  public active: boolean = true;
-  public cropsIds: string[];
+  public active: boolean;
+  public cropsIds!: string[];
 }
 
 Farm.init(
@@ -41,6 +41,7 @@ Farm.init(
     active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: true,
     },
     city: {
       type: DataTypes.STRING,

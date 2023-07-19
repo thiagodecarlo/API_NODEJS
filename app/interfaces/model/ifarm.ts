@@ -9,4 +9,5 @@ export interface IFarm extends IBaseModel {
   totalArea: number;
   arableArea: number;
   vegetationArea: number;
+  cropsIds: string[];
 }

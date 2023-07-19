@@ -11,6 +11,7 @@ import {
   Res,
 } from 'routing-controllers';
 import { inject, injectable } from 'tsyringe';
+import { ICrop } from '../../app/interfaces/model/icrop';
 import { Crop } from '../model/crop.model';
 import { CropRepository } from '../repositories/crop.repository';
 
@@ -25,12 +26,11 @@ export class CropController {
   @Get('/')
   public async getAll(@Req() req: Request, @Res() res: Response) {
     try {
-      const plantingCrops = await this.cropRepository.getAll();
+      const plantingCrops = await this.cropRepository.getAllNested();
       res.status(200).json(plantingCrops);
     } catch (err) {
       res.status(500).json({
         error: 'Error retrieving Crops',
-        details: err,
       });
     }
   }
@@ -38,7 +38,7 @@ export class CropController {
   @Get('/:id')
   public async getById(@Res() res: Response, @Param('id') id: string) {
     try {
-      const response = await this.cropRepository.getById(id);
+      const response = await this.cropRepository.getByIdNested(id);
       res.status(200).json(response);
     } catch (error) {
       res.status(500).json({ error: 'Error retrieving Crop' });
@@ -46,19 +46,22 @@ export class CropController {
   }
 
   @Post('/')
-  public async create(@Res() res: Response, @Body() body: Crop) {
+  public async create(@Res() res: Response, @Body() body: ICrop) {
     try {
       let entity = new Crop();
       entity.name = body.name;
       const response = await this.cropRepository.create(entity);
-      res.status(201).send(response);
+      res.status(201).json(response);
     } catch (error) {
-      res.status(500).send({ status: error });
+      res.status(500).json({ error: 'Error on create Crop' });
     }
   }
 
   @Put('/')
-  public async update(@Res() res: Response, @Body() body: Crop): Promise<void> {
+  public async update(
+    @Res() res: Response,
+    @Body() body: ICrop
+  ): Promise<void> {
     const { id, name } = body;
     try {
       const updates: Partial<Crop> = {
@@ -78,7 +81,10 @@ export class CropController {
   }
 
   @Delete('/')
-  public async delete(@Res() res: Response, @Body() body: Crop): Promise<void> {
+  public async delete(
+    @Res() res: Response,
+    @Body() body: ICrop
+  ): Promise<void> {
     try {
       const { id } = body;
       await this.cropRepository.delete(id);

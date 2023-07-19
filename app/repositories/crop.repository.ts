@@ -9,7 +9,29 @@ export class CropRepository extends RepositoryBase<Crop, ICrop> {
     super(Crop);
   }
 
-  public async create(crop: Partial<Crop>): Promise<Crop> {
+  public async getAllNested(): Promise<ICrop[]> {
+    try {
+      const entities = await Crop.findAll({
+        include: { all: true, nested: true },
+      });
+      return entities as Crop[];
+    } catch (error) {
+      throw new Error('Error getting entity from database:' + error);
+    }
+  }
+
+  public async getByIdNested(id: string): Promise<ICrop> {
+    try {
+      const entity = await Crop.findByPk(id, {
+        include: { all: true, nested: true },
+      });
+      return entity as Crop;
+    } catch (error) {
+      throw new Error('Error getting entity from database:' + error);
+    }
+  }
+
+  public async create(crop: Partial<Crop>): Promise<ICrop> {
     try {
       const newCrop = await Crop.create(crop);
       return newCrop;
@@ -21,7 +43,7 @@ export class CropRepository extends RepositoryBase<Crop, ICrop> {
   public async update(
     id: string,
     updates: Partial<Crop>
-  ): Promise<Crop | null> {
+  ): Promise<ICrop | null> {
     try {
       const crop = await Crop.findByPk(id);
       if (crop) {

@@ -1,6 +1,6 @@
-import { Model } from 'sequelize';
-
-export interface IBaseModel extends Model {
+interface IBaseModel {
   id: string;
   active: boolean;
 }
+
+export { IBaseModel };

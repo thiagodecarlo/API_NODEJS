@@ -8,7 +8,7 @@ export class FarmRepository extends RepositoryBase<Farm, IFarm> {
     super(Farm);
   }
 
-  public override async getAll(): Promise<Farm[]> {
+  public async getAllNested(): Promise<IFarm[]> {
     try {
       const entities = await Farm.findAll({
         include: { all: true, nested: true },
@@ -19,7 +19,7 @@ export class FarmRepository extends RepositoryBase<Farm, IFarm> {
     }
   }
 
-  public override async getById(id: string): Promise<Farm> {
+  public async getByIdNested(id: string): Promise<IFarm> {
     try {
       const entity = await Farm.findByPk(id, {
         include: { all: true, nested: true },
@@ -30,7 +30,7 @@ export class FarmRepository extends RepositoryBase<Farm, IFarm> {
     }
   }
 
-  public async create(farm: Partial<Farm>): Promise<Farm> {
+  public async create(farm: Partial<Farm>): Promise<IFarm> {
     try {
       const createdFarm = await Farm.create(farm);
       return createdFarm;
@@ -41,8 +41,8 @@ export class FarmRepository extends RepositoryBase<Farm, IFarm> {
 
   public async update(
     id: string,
-    updates: Partial<Farm>
-  ): Promise<Farm | null> {
+    updates: Partial<IFarm>
+  ): Promise<IFarm | null> {
     try {
       const farm = await Farm.findByPk(id);
       if (farm) {
