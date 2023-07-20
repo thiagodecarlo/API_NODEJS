@@ -6,9 +6,9 @@
   "scripts": {
     "build": "tsc",
     "watch-ts": "tsc -w",
-    "dev": "tsc && nodemon -r dotenv/config --inspect ./dist/entry.js",
-    "start:dev": "nodemon --watch 'app/' --exec 'ts-node src/index.ts' -e ts",
-    "start": "npm run build && nodemon ./dist/entry.js",
+    "dev": "tsc && nodemon -r dotenv/config --inspect ./dist/app/entry.js",
+    "start:dev": "nodemon --watch 'app/' --exec 'ts-node ./app/index.ts' -e ts",
+    "start": "npm run build && nodemon ./dist/app/entry.js",
     "prod": "npm run build && npm run start",
     "debug": "npm run build && npm run watch-debug",
     "postgres:start": "docker run -d --name node_postgresql -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=postgres -v %cd%/pgdata:/var/lib/postgresql/data -p 5432:5432 postgres",

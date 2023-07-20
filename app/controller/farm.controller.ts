@@ -54,24 +54,49 @@ export class FarmController {
   public async postFarm(@Res() res: Response, @Body() body: IFarm) {
     try {
       const { cropsIds, ...data } = body;
-      const farm = await this.FarmRepository.create(data);
-      if (cropsIds && cropsIds.length > 0) {
-        return new Promise<void>((resolve, reject) => {
-          cropsIds.map(async (id) => {
+      const { totalArea, vegetationArea, arableArea, document } = data;
+
+      if (
+        Farm.validateDocument(body.document) &&
+        Farm.validateArea(totalArea, arableArea, vegetationArea)
+      ) {
+        const farm = await this.FarmRepository.create(data);
+
+        if (cropsIds && cropsIds.length > 0) {
+          const farmCropPromises = cropsIds.map(async (id) => {
             const crop = await Crop.findByPk(id);
             if (crop) {
-              const farmCrop = await this.farmCropRepository.create({
-                FarmId: farm.id,
+              await this.farmCropRepository.create({
+                FarmId: (farm as Farm).dataValues.id, // Usar diretamente o farm.id
                 CropId: id,
               });
             }
           });
-          resolve();
-        }).then(async () => {
+
+          await Promise.all(farmCropPromises); // Aguardar todas as promessas serem resolvidas
+
           const populatedFarm = await this.FarmRepository.getByIdNested(
-            farm.id
+            (farm as Farm).dataValues.id
           );
-          res.status(201).json(populatedFarm);
+          const populatedFarmData = (populatedFarm as Farm).dataValues;
+          res.status(201).json(populatedFarmData);
+        } else {
+          res.status(201).json((farm as Farm).dataValues); // Caso não haja cropsIds, retornar apenas o farm criado
+        }
+      } else {
+        let msg = '';
+
+        if (!Farm.validateDocument(body.document)) {
+          msg += 'Verifique os campos document (CPF ou CNPJ); ';
+        }
+
+        if (!Farm.validateArea(totalArea, arableArea, vegetationArea)) {
+          msg +=
+            'totalArea é maior ou igual a soma de arableArea e vegetationArea; ';
+        }
+
+        res.status(422).json({
+          error: msg,
         });
       }
     } catch (err) {

@@ -4,6 +4,9 @@ import { TableNames } from '../config/database/table-names.enum';
 import { IFarm } from '../interfaces/model/ifarm';
 import { FarmCrop } from './farm-crop.model';
 
+const BR_CPF_CNPJ_REGEX =
+  /^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
+
 class Farm extends Model implements IFarm {
   id: string;
   public name: string;
@@ -16,6 +19,18 @@ class Farm extends Model implements IFarm {
   public vegetationArea: number;
   public active: boolean;
   public cropsIds!: string[];
+
+  static validateDocument(value: string): boolean {
+    return BR_CPF_CNPJ_REGEX.test(value);
+  }
+
+  static validateArea(
+    _totalArea: number,
+    _arableArea: number,
+    _vegetationArea: number
+  ): boolean {
+    return +_arableArea + +_vegetationArea <= +_totalArea;
+  }
 }
 
 Farm.init(
@@ -69,6 +84,22 @@ Farm.init(
     sequelize: PostgreSequelizeConnector,
     modelName: 'Farm',
     tableName: TableNames.FARMS,
+    hooks: {
+      beforeValidate: (farm: Farm) => {
+        if (farm.document && !Farm.validateDocument(farm.document)) {
+          throw new Error(
+            'Invalid document format. Must be a valid CPF or CNPJ.'
+          );
+        }
+      },
+      beforeSave: (farm: Farm) => {
+        if (farm.document && !Farm.validateDocument(farm.document)) {
+          throw new Error(
+            'Invalid document format. Must be a valid CPF or CNPJ.'
+          );
+        }
+      },
+    },
   }
 );
 
