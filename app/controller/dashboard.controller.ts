@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { Controller, Get, Req, Res } from 'routing-controllers';
+import { Response } from 'express';
+import { Controller, Get, Res } from 'routing-controllers';
 import { inject, injectable } from 'tsyringe';
 import { CropRepository } from '../repositories/crop.repository';
 import { FarmRepository } from '../repositories/farm.repository';
@@ -14,7 +14,7 @@ export class DashboardController {
   ) {}
 
   @Get('/farms-count')
-  public async CountAllFarms(@Req() req: Request, @Res() res: Response) {
+  public async CountAllFarms(@Res() res: Response) {
     try {
       const count = await this.farmRepository.CountAllFarms();
       res.status(200).json({
@@ -23,7 +23,6 @@ export class DashboardController {
     } catch (err) {
       res.status(500).json({
         error: 'Error retrieving Farm Count',
-        details: err,
       });
     }
   }
