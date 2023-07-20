@@ -62,21 +62,22 @@ export class FarmController {
       ) {
         const farm = await this.FarmRepository.create(data);
 
+        let _farmId = (farm as Farm).id || (farm as Farm).dataValues.id;
         if (cropsIds && cropsIds.length > 0) {
           const farmCropPromises = cropsIds.map(async (id) => {
             const crop = await Crop.findByPk(id);
             if (crop) {
               await this.farmCropRepository.create({
-                FarmId: (farm as Farm).dataValues.id, // Usar diretamente o farm.id
+                FarmId: _farmId,
                 CropId: id,
               });
             }
           });
 
-          await Promise.all(farmCropPromises); // Aguardar todas as promessas serem resolvidas
+          await Promise.all(farmCropPromises);
 
           const populatedFarm = await this.FarmRepository.getByIdNested(
-            (farm as Farm).dataValues.id
+            _farmId
           );
           const populatedFarmData = (populatedFarm as Farm).dataValues;
           res.status(201).json(populatedFarmData);
@@ -100,6 +101,8 @@ export class FarmController {
         });
       }
     } catch (err) {
+      console.error(err); // Adicione este log para visualizar o erro específico que ocorre aqui
+
       res.status(500).json({
         error: 'Error on recording registries',
         details: err,

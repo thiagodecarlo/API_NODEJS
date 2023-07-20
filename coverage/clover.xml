@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1689818728283" clover="3.2.0">
-  <project timestamp="1689818728283" name="All files">
-    <metrics statements="566" coveredstatements="376" conditionals="188" coveredconditionals="108" methods="109" coveredmethods="65" elements="863" coveredelements="549" complexity="0" loc="566" ncloc="566" packages="11" files="26" classes="26"/>
+<coverage generated="1689863677510" clover="3.2.0">
+  <project timestamp="1689863677510" name="All files">
+    <metrics statements="652" coveredstatements="431" conditionals="253" coveredconditionals="143" methods="126" coveredmethods="72" elements="1031" coveredelements="646" complexity="0" loc="652" ncloc="652" packages="12" files="28" classes="28"/>
     <package name="app.config.database">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="postgresql-config.ts" path="D:\REPOS\Thiago\API_NODEJS\app\config\database\postgresql-config.ts">
@@ -31,7 +31,7 @@
       </file>
     </package>
     <package name="app.controller">
-      <metrics statements="112" coveredstatements="112" conditionals="8" coveredconditionals="8" methods="20" coveredmethods="20"/>
+      <metrics statements="124" coveredstatements="121" conditionals="17" coveredconditionals="15" methods="18" coveredmethods="18"/>
       <file name="crop.controller.ts" path="D:\REPOS\Thiago\API_NODEJS\app\controller\crop.controller.ts">
         <metrics statements="38" coveredstatements="38" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
         <line num="2" count="1" type="stmt"/>
@@ -104,10 +104,11 @@
         <line num="59" count="1" type="stmt"/>
       </file>
       <file name="farm.controller.ts" path="D:\REPOS\Thiago\API_NODEJS\app\controller\farm.controller.ts">
-        <metrics statements="47" coveredstatements="47" conditionals="6" coveredconditionals="6" methods="9" coveredmethods="9"/>
+        <metrics statements="59" coveredstatements="56" conditionals="15" coveredconditionals="13" methods="7" coveredmethods="7"/>
         <line num="2" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
@@ -127,35 +128,46 @@
         <line num="55" count="2" type="stmt"/>
         <line num="56" count="2" type="stmt"/>
         <line num="57" count="2" type="stmt"/>
-        <line num="58" count="1" type="cond" truecount="3" falsecount="0"/>
-        <line num="59" count="1" type="stmt"/>
-        <line num="60" count="1" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
-        <line num="62" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="59" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="63" count="1" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
-        <line num="71" count="1" type="stmt"/>
-        <line num="74" count="1" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
-        <line num="86" count="1" type="stmt"/>
-        <line num="90" count="3" type="stmt"/>
-        <line num="91" count="3" type="stmt"/>
-        <line num="92" count="3" type="stmt"/>
-        <line num="94" count="3" type="stmt"/>
-        <line num="96" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="97" count="1" type="stmt"/>
+        <line num="65" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="66" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="69" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="90" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="94" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="95" count="1" type="stmt"/>
         <line num="99" count="1" type="stmt"/>
-        <line num="102" count="1" type="stmt"/>
-        <line num="109" count="1" type="stmt"/>
-        <line num="113" count="2" type="stmt"/>
-        <line num="114" count="2" type="stmt"/>
-        <line num="115" count="2" type="stmt"/>
-        <line num="116" count="1" type="stmt"/>
-        <line num="118" count="2" type="stmt"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="118" count="3" type="stmt"/>
+        <line num="119" count="3" type="stmt"/>
+        <line num="120" count="3" type="stmt"/>
+        <line num="122" count="3" type="stmt"/>
+        <line num="124" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="125" count="1" type="stmt"/>
+        <line num="127" count="1" type="stmt"/>
+        <line num="130" count="1" type="stmt"/>
+        <line num="137" count="1" type="stmt"/>
+        <line num="141" count="2" type="stmt"/>
+        <line num="142" count="2" type="stmt"/>
+        <line num="143" count="2" type="stmt"/>
+        <line num="144" count="1" type="stmt"/>
+        <line num="146" count="2" type="stmt"/>
       </file>
     </package>
     <package name="app.model">
-      <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="30" coveredstatements="25" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="2"/>
       <file name="crop.model.ts" path="D:\REPOS\Thiago\API_NODEJS\app\model\crop.model.ts">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="3" type="stmt"/>
@@ -169,28 +181,35 @@
         <line num="53" count="3" type="stmt"/>
       </file>
       <file name="farm-crop.model.ts" path="D:\REPOS\Thiago\API_NODEJS\app\model\farm-crop.model.ts">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
         <line num="3" count="3" type="stmt"/>
         <line num="6" count="3" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
         <line num="12" count="3" type="stmt"/>
       </file>
       <file name="farm.model.ts" path="D:\REPOS\Thiago\API_NODEJS\app\model\farm.model.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="15" coveredstatements="11" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="75" count="2" type="stmt"/>
-        <line num="82" count="2" type="stmt"/>
-        <line num="89" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="89" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="96" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="106" count="2" type="stmt"/>
+        <line num="113" count="2" type="stmt"/>
+        <line num="120" count="2" type="stmt"/>
       </file>
     </package>
     <package name="app.repositories">
-      <metrics statements="114" coveredstatements="22" conditionals="6" coveredconditionals="0" methods="27" coveredmethods="6"/>
+      <metrics statements="115" coveredstatements="17" conditionals="6" coveredconditionals="0" methods="27" coveredmethods="4"/>
       <file name="crop.repository.ts" path="D:\REPOS\Thiago\API_NODEJS\app\repositories\crop.repository.ts">
         <metrics statements="42" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="11" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
@@ -237,14 +256,14 @@
         <line num="95" count="0" type="stmt"/>
       </file>
       <file name="farm-crop.repository.ts" path="D:\REPOS\Thiago\API_NODEJS\app\repositories\farm-crop.repository.ts">
-        <metrics statements="21" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="2"/>
+        <metrics statements="21" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="9" count="11" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
@@ -261,7 +280,7 @@
         <line num="44" count="0" type="stmt"/>
       </file>
       <file name="farm.repository.ts" path="D:\REPOS\Thiago\API_NODEJS\app\repositories\farm.repository.ts">
-        <metrics statements="41" coveredstatements="8" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="2"/>
+        <metrics statements="42" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
@@ -271,38 +290,39 @@
         <line num="13" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="49" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="50" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
         <line num="81" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
       </file>
       <file name="repository-base.ts" path="D:\REPOS\Thiago\API_NODEJS\app\repositories\repository-base.ts">
         <metrics statements="10" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
@@ -322,40 +342,40 @@
       <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="postgresql-config.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\config\database\postgresql-config.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
       </file>
       <file name="table-names.enum.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\config\database\table-names.enum.js">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
       </file>
     </package>
     <package name="dist.app.config.environment">
       <metrics statements="9" coveredstatements="9" conditionals="13" coveredconditionals="9" methods="1" coveredmethods="1"/>
       <file name="environment.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\config\environment\environment.js">
         <metrics statements="9" coveredstatements="9" conditionals="13" coveredconditionals="9" methods="1" coveredmethods="1"/>
-        <line num="2" count="2" type="cond" truecount="3" falsecount="0"/>
-        <line num="3" count="2" type="cond" truecount="3" falsecount="1"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
+        <line num="2" count="3" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="3" type="cond" truecount="3" falsecount="1"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
       </file>
     </package>
     <package name="dist.app.controller">
-      <metrics statements="109" coveredstatements="107" conditionals="74" coveredconditionals="50" methods="23" coveredmethods="23"/>
+      <metrics statements="160" coveredstatements="154" conditionals="116" coveredconditionals="78" methods="30" coveredmethods="30"/>
       <file name="crop.controller.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\controller\crop.controller.js">
         <metrics statements="50" coveredstatements="49" conditionals="34" coveredconditionals="23" methods="10" coveredmethods="10"/>
         <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
@@ -409,8 +429,50 @@
         <line num="117" count="1" type="stmt"/>
         <line num="125" count="1" type="stmt"/>
       </file>
+      <file name="dashboard.controller.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\controller\dashboard.controller.js">
+        <metrics statements="39" coveredstatements="38" conditionals="32" coveredconditionals="21" methods="9" coveredmethods="9"/>
+        <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="5" type="cond" truecount="3" falsecount="1"/>
+        <line num="4" count="5" type="cond" truecount="3" falsecount="1"/>
+        <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+        <line num="6" count="5" type="cond" truecount="3" falsecount="0"/>
+        <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="9" count="13" type="cond" truecount="3" falsecount="1"/>
+        <line num="11" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="24" count="8" type="stmt"/>
+        <line num="25" count="8" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+      </file>
       <file name="farm.controller.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\controller\farm.controller.js">
-        <metrics statements="59" coveredstatements="58" conditionals="40" coveredconditionals="27" methods="13" coveredmethods="13"/>
+        <metrics statements="71" coveredstatements="67" conditionals="50" coveredconditionals="34" methods="11" coveredmethods="11"/>
         <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
         <line num="3" count="6" type="cond" truecount="3" falsecount="1"/>
         <line num="4" count="6" type="cond" truecount="3" falsecount="1"/>
@@ -428,109 +490,128 @@
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
-        <line num="25" count="11" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
         <line num="26" count="11" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
+        <line num="27" count="11" type="stmt"/>
         <line num="30" count="2" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="41" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
         <line num="42" count="2" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="53" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
         <line num="54" count="2" type="stmt"/>
         <line num="55" count="2" type="stmt"/>
-        <line num="56" count="1" type="cond" truecount="3" falsecount="1"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="cond" truecount="4" falsecount="0"/>
         <line num="59" count="1" type="stmt"/>
         <line num="60" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="61" count="1" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
-        <line num="75" count="1" type="stmt"/>
-        <line num="82" count="3" type="stmt"/>
-        <line num="83" count="3" type="stmt"/>
-        <line num="84" count="3" type="stmt"/>
-        <line num="85" count="3" type="stmt"/>
-        <line num="86" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="87" count="1" type="stmt"/>
-        <line num="90" count="1" type="stmt"/>
-        <line num="94" count="1" type="stmt"/>
-        <line num="100" count="2" type="stmt"/>
-        <line num="101" count="2" type="stmt"/>
-        <line num="102" count="2" type="stmt"/>
-        <line num="103" count="1" type="stmt"/>
-        <line num="106" count="2" type="stmt"/>
-        <line num="110" count="1" type="stmt"/>
-        <line num="117" count="1" type="stmt"/>
-        <line num="125" count="1" type="stmt"/>
-        <line num="133" count="1" type="stmt"/>
-        <line num="141" count="1" type="stmt"/>
-        <line num="149" count="1" type="stmt"/>
+        <line num="61" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="85" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="103" count="3" type="stmt"/>
+        <line num="104" count="3" type="stmt"/>
+        <line num="105" count="3" type="stmt"/>
+        <line num="106" count="3" type="stmt"/>
+        <line num="107" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="108" count="1" type="stmt"/>
+        <line num="111" count="1" type="stmt"/>
+        <line num="115" count="1" type="stmt"/>
+        <line num="121" count="2" type="stmt"/>
+        <line num="122" count="2" type="stmt"/>
+        <line num="123" count="2" type="stmt"/>
+        <line num="124" count="1" type="stmt"/>
+        <line num="127" count="2" type="stmt"/>
+        <line num="131" count="1" type="stmt"/>
+        <line num="138" count="1" type="stmt"/>
+        <line num="146" count="1" type="stmt"/>
+        <line num="154" count="1" type="stmt"/>
+        <line num="162" count="1" type="stmt"/>
+        <line num="170" count="1" type="stmt"/>
       </file>
     </package>
     <package name="dist.app.model">
-      <metrics statements="29" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="36" coveredstatements="31" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="2"/>
       <file name="crop.model.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\model\crop.model.js">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+      </file>
+      <file name="farm-crop.model.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\model\farm-crop.model.js">
+        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+      </file>
+      <file name="farm.model.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\model\farm.model.js">
+        <metrics statements="17" coveredstatements="13" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="42" count="2" type="stmt"/>
-      </file>
-      <file name="farm-crop.model.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\model\farm-crop.model.js">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-      </file>
-      <file name="farm.model.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\model\farm.model.js">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="72" count="1" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="80" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="85" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="91" count="2" type="stmt"/>
+        <line num="97" count="2" type="stmt"/>
       </file>
     </package>
     <package name="dist.app.repositories">
-      <metrics statements="140" coveredstatements="46" conditionals="77" coveredconditionals="34" methods="32" coveredmethods="11"/>
+      <metrics statements="141" coveredstatements="41" conditionals="77" coveredconditionals="34" methods="32" coveredmethods="9"/>
       <file name="crop.repository.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\repositories\crop.repository.js">
         <metrics statements="52" coveredstatements="14" conditionals="33" coveredconditionals="14" methods="13" coveredmethods="3"/>
-        <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
-        <line num="3" count="1" type="cond" truecount="1" falsecount="3"/>
-        <line num="4" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="2" count="2" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="2" type="cond" truecount="1" falsecount="3"/>
+        <line num="4" count="2" type="cond" truecount="3" falsecount="1"/>
         <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
-        <line num="6" count="1" type="cond" truecount="1" falsecount="2"/>
-        <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
-        <line num="9" count="1" type="cond" truecount="3" falsecount="1"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
+        <line num="6" count="2" type="cond" truecount="1" falsecount="2"/>
+        <line num="8" count="2" type="cond" truecount="3" falsecount="0"/>
+        <line num="9" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="19" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
@@ -568,10 +649,10 @@
         <line num="91" count="0" type="stmt"/>
         <line num="94" count="0" type="stmt"/>
         <line num="98" count="0" type="stmt"/>
-        <line num="102" count="1" type="stmt"/>
+        <line num="102" count="2" type="stmt"/>
       </file>
       <file name="farm-crop.repository.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\repositories\farm-crop.repository.js">
-        <metrics statements="31" coveredstatements="16" conditionals="33" coveredconditionals="14" methods="6" coveredmethods="4"/>
+        <metrics statements="31" coveredstatements="14" conditionals="33" coveredconditionals="14" methods="6" coveredmethods="3"/>
         <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="3"/>
         <line num="4" count="1" type="cond" truecount="3" falsecount="1"/>
@@ -586,8 +667,8 @@
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="18" count="11" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
@@ -605,58 +686,59 @@
         <line num="54" count="1" type="stmt"/>
       </file>
       <file name="farm.repository.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\repositories\farm.repository.js">
-        <metrics statements="45" coveredstatements="12" conditionals="11" coveredconditionals="6" methods="10" coveredmethods="3"/>
-        <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
-        <line num="3" count="1" type="cond" truecount="3" falsecount="1"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="12" count="11" type="stmt"/>
+        <metrics statements="46" coveredstatements="9" conditionals="11" coveredconditionals="6" methods="10" coveredmethods="2"/>
+        <line num="2" count="2" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="2" type="cond" truecount="3" falsecount="1"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="12" count="19" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="49" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="50" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
         <line num="81" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="99" count="0" type="stmt"/>
-        <line num="103" count="1" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="104" count="2" type="stmt"/>
       </file>
       <file name="repository-base.js" path="D:\REPOS\Thiago\API_NODEJS\dist\app\repositories\repository-base.js">
         <metrics statements="12" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="7" count="33" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="7" count="49" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
@@ -665,7 +747,20 @@
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="dist.test.helper">
+      <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+      <file name="mock-helper.js" path="D:\REPOS\Thiago\API_NODEJS\dist\test\helper\mock-helper.js">
+        <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
       </file>
     </package>
     <package name="test.helper">

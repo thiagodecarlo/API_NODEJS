@@ -9,7 +9,7 @@ export class FarmCropRepository extends RepositoryBase<FarmCrop, IFarmCrop> {
     super(FarmCrop);
   }
 
-  public async create(crop: Partial<FarmCrop>): Promise<FarmCrop> {
+  public async create(crop: Partial<IFarmCrop>): Promise<IFarmCrop> {
     try {
       const newCrop = await FarmCrop.create(crop);
       return newCrop;
@@ -20,8 +20,8 @@ export class FarmCropRepository extends RepositoryBase<FarmCrop, IFarmCrop> {
 
   public async update(
     id: string,
-    updates: Partial<FarmCrop>
-  ): Promise<FarmCrop | null> {
+    updates: Partial<IFarmCrop>
+  ): Promise<IFarmCrop | null> {
     try {
       const crop = await FarmCrop.findByPk(id);
       if (crop) {

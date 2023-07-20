@@ -1,8 +1,13 @@
 import { Response } from 'express';
 import 'reflect-metadata';
+import { Model } from 'sequelize';
 import { FarmController } from '../../app/controller/farm.controller';
+import { ICrop } from '../../app/interfaces/model/icrop';
 import { IFarm } from '../../app/interfaces/model/ifarm';
+import { IFarmCrop } from '../../app/interfaces/model/ifarm-crop';
 import { Crop } from '../../app/model/crop.model';
+import { FarmCrop } from '../../app/model/farm-crop.model';
+import { Farm } from '../../app/model/farm.model';
 import { FarmCropRepository } from '../../app/repositories/farm-crop.repository';
 import { FarmRepository } from '../../app/repositories/farm.repository';
 import { MockHelper } from '../helper/mock-helper';
@@ -105,60 +110,107 @@ describe('Farm Controller Tests', () => {
     });
   });
 
-  it('should call postFarm method and create farm', async () => {
-    // Mock para Crop.findByPk
-    jest.spyOn(Crop, 'findByPk').mockResolvedValue({
-      id: 'df354e26-99970-48b5-9230-32383818f527',
-      name: 'cacau',
-    } as Crop);
+  it('should create a farm with cropsIds and return 201', async () => {
+    // Arrange
+    const body = {
+      name: 'Farm 1',
+      document: '123.456.789-00', // CPF válido
+      propertyName: 'Property 1',
+      city: 'City 1',
+      state: 'State 1',
+      totalArea: 100,
+      arableArea: 50,
+      vegetationArea: 50,
+      active: true,
+      cropsIds: ['1'],
+    };
 
-    jest.spyOn(farmRepository, 'create').mockResolvedValue(farm);
+    const farm = {
+      name: 'Farm 1',
+      document: '123.456.789-00', // CPF válido
+      propertyName: 'Property 1',
+      city: 'City 1',
+      state: 'State 1',
+      totalArea: 100,
+      arableArea: 50,
+      vegetationArea: 50,
+      active: true,
+    };
+
+    const farmCreated = {
+      id: 'ce354e26-9970-48b5-9300-32340818f563',
+      name: 'Farm 1',
+      document: '123.456.789-00', // CPF válido
+      propertyName: 'Property 1',
+      city: 'City 1',
+      state: 'State 1',
+      totalArea: 100,
+      arableArea: 50,
+      vegetationArea: 50,
+      active: true,
+    };
+
+    const mockFarm: Partial<Farm> = { ...body, id: '1' };
+    const mockFarmRepositoryCreate = jest
+      .spyOn(farmRepository, 'create')
+      .mockResolvedValue(mockFarm as Farm);
+
+    const mockCrop1: Partial<ICrop> = {
+      id: '1',
+      name: 'Crop 1',
+    };
+    const mockCropRepositoryFindByPk = jest
+      .spyOn(Crop, 'findByPk')
+      .mockResolvedValueOnce(mockCrop1 as Model<any, any>);
+
+    const mockFarmCrop1: Partial<IFarmCrop> = {
+      CropId: '1',
+      FarmId: '1',
+    };
+
+    const mockFarmCropRepositoryCreate = jest
+      .spyOn(farmCropRepository, 'create')
+      .mockResolvedValueOnce(mockFarmCrop1 as FarmCrop);
+
+    const mockFarmRepositoryGetByIdNested = jest
+      .spyOn(farmRepository, 'getByIdNested')
+      .mockResolvedValueOnce(farmCreated as Farm);
 
     // Act
-    const mockResponse = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    } as Partial<Response>;
-    await farmController.postFarm(mockResponse as Response, farm as IFarm);
+    await farmController.postFarm(mockResponse as Response, body as IFarm);
 
     // Assert
-    expect(farmRepository.create).toHaveBeenCalledTimes(1);
+    expect(mockFarmRepositoryCreate).toHaveBeenCalledWith(farm);
+    expect(mockCropRepositoryFindByPk).toHaveBeenCalledWith('1');
+    expect(mockFarmCropRepositoryCreate).toHaveBeenCalledWith(mockFarmCrop1);
+    expect(mockFarmRepositoryGetByIdNested).toHaveBeenCalledWith('1');
     expect(mockResponse.status).toHaveBeenCalledWith(201);
   });
 
-  it('should handle error in postFarm method', async () => {
+  it('should return 422 when validation fails', async () => {
     // Arrange
-    const createData = {
-      name: 'string',
-      document: '12312312323',
-      propertyName: 'Fazenda Santa Fé',
-      city: 'Presidente Prudente',
-      state: 'São Paulo',
-      totalArea: 1200,
-      arableArea: 1000,
-      vegetationArea: 200,
-      active: true,
+    const mockFarmData = {
+      name: 'Farm 3',
+      document: '123',
+      propertyName: 'Property 3',
+      city: 'City 3',
+      state: 'State 3',
+      totalArea: 50,
+      arableArea: 25,
+      vegetationArea: 30,
     };
-    const errorMessage = { Error: 'Error on recording registries' };
-    jest.spyOn(farmRepository, 'create').mockRejectedValue(errorMessage);
 
     // Act
-    const mockResponse = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    } as Partial<Response>;
     await farmController.postFarm(
       mockResponse as Response,
-      createData as IFarm
+      mockFarmData as IFarm
     );
 
     // Assert
-    expect(farmRepository.create).toHaveBeenCalledTimes(1);
-    expect(farmRepository.create).toHaveBeenCalledWith(createData);
-    expect(mockResponse.status).toHaveBeenCalledWith(500);
+    expect(mockResponse.status).toHaveBeenCalledWith(422);
     expect(mockResponse.json).toHaveBeenCalledWith({
-      error: 'Error on recording registries',
-      details: errorMessage,
+      error:
+        'Verifique os campos document (CPF ou CNPJ); totalArea é maior ou igual a soma de arableArea e vegetationArea; ',
     });
   });
 

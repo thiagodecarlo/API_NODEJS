@@ -25,12 +25,13 @@ export class FarmRepository extends RepositoryBase<Farm, IFarm> {
         include: { all: true, nested: true },
       });
       return entity as Farm;
-    } catch (error) {
-      throw new Error('Error getting entity from database:' + error);
+    } catch (err) {
+      console.error(err);
+      throw new Error('Error getting entity from database:' + err);
     }
   }
 
-  public async create(farm: Partial<Farm>): Promise<IFarm> {
+  public async create(farm: Partial<IFarm>): Promise<IFarm> {
     try {
       const createdFarm = await Farm.create(farm);
       return createdFarm;
