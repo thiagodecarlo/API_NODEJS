@@ -18,7 +18,7 @@
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "test": "jest",
-    "teste-unico": "jest test/controller/farm.controller.test.ts",
+    "teste-unico": "jest test/controller/dashboard.controller.test.ts",
     "test:autocannon": "npx autocannon -c 500 -d 30 --workers 16 --renderStatusCodes --latency --warmup [-c 1 -d 2] http://localhost:3300"
   },
   "keywords": [
