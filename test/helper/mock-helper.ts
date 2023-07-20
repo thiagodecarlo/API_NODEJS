@@ -1,24 +1,33 @@
-import { Crop } from '../../app/model/crop.model';
-import { Farm } from '../../app/model/farm.model';
-
 export class MockHelper {
-  private getCrop(): Crop {
-    const plantingCrop: Crop = new Crop();
-    plantingCrop.name = 'string';
-    return plantingCrop;
+  public getCrop() {
+    return {
+      id: '3fc53545-00e0-480c-a231-fccc3e4e3cb9',
+      name: 'string',
+      active: true,
+    };
   }
 
-  private getAllCrops(): Crop[] {
+  public getAllCrops() {
     return new Array(this.getCrop());
   }
 
-  private getruralProducer(): Farm {
-    const ruralProducer: Farm = new Farm();
-    ruralProducer.name = 'string';
-    return ruralProducer;
+  public getFarm() {
+    return {
+      id: 'ce354e26-9970-48b5-9300-32340818f563',
+      name: 'string',
+      document: '12312312323',
+      propertyName: 'Fazenda Santa Fé',
+      city: 'Presidente Prudente',
+      state: 'São Paulo',
+      totalArea: 1200,
+      arableArea: 1000,
+      vegetationArea: 200,
+      active: true,
+      cropsIds: ['df354e26-99970-48b5-9230-32383818f527'],
+    };
   }
 
-  private getAllFarms(): Farm[] {
-    return new Array(this.getruralProducer());
+  public getAllFarms(): any[] {
+    return new Array(this.getFarm());
   }
 }
